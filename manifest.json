@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "FinnBlokk",
+    "description": "Blokkere annonser på finn.no",
+    "version": "1.0",
+    "permissions": ["storage"],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.finn.no/*/*/ad.html?finnkode=*"],
+        "js": ["config.js", "content_script_for_ad.js"]
+      },
+      {
+        "matches": ["https://www.finn.no/*/*/search.html*"],
+        "js": ["config.js", "content_script_for_search.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    }
+  }
+  
